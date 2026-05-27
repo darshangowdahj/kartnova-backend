@@ -3,12 +3,12 @@ spring.application.name=kartnova
 server.port=8080
 spring.datasource.url=jdbc:mysql://localhost:3306/kartnova
 spring.datasource.username=root
-spring.datasource.password=hb@1511
+spring.datasource.password=your_database_password
 spring.jpa.hibernate.ddl-auto=update
 spring.security.enabled=false
 
-jwt.secret=your-very-long-secure-secret-key-for-production-12345678901234567890 
+jwt.secret=your-very-long-secure-secret-key-for-production-12345678901234567890
 jwt.expiration=3600000
 
-razorpay.key_id=rzp_test_SKRFNGvpbmw9kY
-razorpay.key_secret=iOvBgDmN3mLxS4quPKFVl1nc
+razorpay.key_id=rzp_test_your_key_id_here
+razorpay.key_secret=your_razorpay_key_secret
