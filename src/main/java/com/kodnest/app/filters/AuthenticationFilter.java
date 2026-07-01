@@ -58,8 +58,9 @@ public class AuthenticationFilter implements Filter{
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-
+        setCORSHeaders(httpResponse);
         String requestURI = httpRequest.getRequestURI();
+        
         logger.info("Request URI: {}", requestURI);
 
         // Allow unauthenticated paths
@@ -70,7 +71,7 @@ public class AuthenticationFilter implements Filter{
 
         // Handle preflight (OPTIONS) requests
         if (httpRequest.getMethod().equalsIgnoreCase("OPTIONS")) {
-            setCORSHeaders(httpResponse);
+            httpResponse.setStatus(HttpServletResponse.SC_OK);
             return;
         }
 
@@ -116,7 +117,6 @@ public class AuthenticationFilter implements Filter{
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     private void sendErrorResponse(HttpServletResponse response, int statusCode, String message) throws IOException {
